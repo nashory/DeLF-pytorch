@@ -89,9 +89,10 @@ Let's assume there exist two images, test/img1.jpg, test/img2.jpg in `extract/te
 Run visualize.ipynb using Jupyter Notebook, and run each cells.
 You may get the result like below.
 
-![sample](https://media.oss.navercorp.com/user/7031/files/32cd7a1a-441f-11e8-9761-84e8525af5fa)
-
 
 
 ## Author
-Minchul Shin, min.nashory@navercorp.com
+Minchul Shin([@nashory](https://github.com/nashory))  
+contact: min.nashory@navercorp.com   
+
+![image](https://camo.githubusercontent.com/e053bc3e1b63635239e8a44574e819e62ab3e3f4/687474703a2f2f692e67697068792e636f6d2f49634a366e36564a4e6a524e532e676966)
