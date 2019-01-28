@@ -149,46 +149,37 @@ class FeatureExtractor():
         x: Input FloatTensor, [b x c x w x h]
         output: Output FloatTensor, [b x c x dim x dim]
         '''
-        if mode == 'pca':
-            use_pca = False
-            pca_mean = 'dummy_pca_mean',
-            pca_vars = 'dummy_pca_vars',
-            pca_matrix = 'dummy_pca_matrix',
-            pca_dims = 'dummy_pca_dims',
-            workers = 4
-        else:
-            assert mode == 'delf', 'mode must be either pca or delf'
-            use_pca = copy.deepcopy(self.use_pca)
-            pca_mean = copy.deepcopy(self.pca_mean)
-            pca_vars = copy.deepcopy(self.pca_vars)
-            pca_matrix = copy.deepcopy(self.pca_matrix)
-            pca_dims = copy.deepcopy(self.pca_dims)
-            workers = 4
         try:
-            output = delf_helper.GetDelfFeatureFromMultiScale(
-                x = x,
-                model = self.model,
-                filename = filename,
-                pca_mean = pca_mean,
-                pca_vars = pca_vars,
-                pca_matrix = pca_matrix,
-                pca_dims = pca_dims,
-                rf = self.rf,
-                stride = self.stride,
-                padding = self.padding,
-                top_k = self.top_k,
-                scale_list = self.scale_list,
-                iou_thres = self.iou_thres,
-                attn_thres = self.attn_thres,
-                use_pca = use_pca,
-                workers = workers)
+            workers = 4
             if mode == 'pca':
                 descriptor_np_list = output['descriptor_np_list']
                 descriptor = [descriptor_np_list[i,:] for i in range(descriptor_np_list.shape[0])]
                 return descriptor
             else:
-                assert mode == 'delf'
-                return output
+                assert mode == 'delf', 'mode must be either pca or delf'
+                use_pca = copy.deepcopy(self.use_pca)
+                pca_mean = copy.deepcopy(self.pca_mean)
+                pca_vars = copy.deepcopy(self.pca_vars)
+                pca_matrix = copy.deepcopy(self.pca_matrix)
+                pca_dims = copy.deepcopy(self.pca_dims)
+                return output = delf_helper.GetDelfFeatureFromMultiScale(
+                    x = x,
+                    model = self.model,
+                    filename = filename,
+                    pca_mean = pca_mean,
+                    pca_vars = pca_vars,
+                    pca_matrix = pca_matrix,
+                    pca_dims = pca_dims,
+                    rf = self.rf,
+                    stride = self.stride,
+                    padding = self.padding,
+                    top_k = self.top_k,
+                    scale_list = self.scale_list,
+                    iou_thres = self.iou_thres,
+                    attn_thres = self.attn_thres,
+                    use_pca = use_pca,
+                    workers = workers)
+        
         except Exception as e:
             print('\n[Error] filename:{}, error message:{}'.format(filename, e))
             return None
@@ -241,22 +232,11 @@ class FeatureExtractor():
         batch_timer = AverageMeter()
         data_timer = AverageMeter()
         since = time.time()
-        
 
         # dataloader.
-        '''debug
-        dataset = ImageFolder(
-            root = input_path,
-            transform = transforms.Compose([
-                transforms.Resize((900,900)),
-                transforms.ToTensor(),
-            ]))
-        '''
-        #'''
         dataset = ImageFolder(
             root = input_path,
             transform = transforms.ToTensor())
-        #'''
         self.dataloader = torch.utils.data.DataLoader(
             dataset = dataset,
             batch_size = 1,

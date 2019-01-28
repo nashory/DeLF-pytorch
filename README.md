@@ -47,7 +47,7 @@ $ python main.py \
 
 ## Feature Extraction of DeLF
 There are also two steps to extract DeLF: (1) train PCA, (2) extract dimension reduced DeLF.  
-__IMPORTANT: YOU MUST CHANGE OR COPY THE NAME OF MODEL from `repo/<expr>/keypoint/ckpt/bestshot.pth.tar` to `repo/<expr>/keypoint/ckpt/fix.pth.tar`.__
+__IMPORTANT: YOU MUST CHANGE OR COPY THE NAME OF MODEL from `repo/<expr>/keypoint/ckpt/bestshot.pth.tar` to `repo/<expr>/keypoint/ckpt/fix.pth.tar`.__  
 __I intentionally added this to prevent the model from being updated after the PCA matrix is already calculated.__
 
 ### (1) train PCA
