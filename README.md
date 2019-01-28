@@ -89,6 +89,7 @@ Let's assume there exist two images, test/img1.jpg, test/img2.jpg in `extract/te
 Run visualize.ipynb using Jupyter Notebook, and run each cells.
 You may get the result like below.
 
+![image](https://oss.navercorp.com/VisualSearch/deep-feature-laboratory/blob/master/local/delf/README.mdhttps://github.com/nashory/DeLF-pytorch/blob/master/static/vis.png)
 
 
 ## Author
