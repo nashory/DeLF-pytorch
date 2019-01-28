@@ -1,5 +1,6 @@
 
 # Pytorch Implementation of Deep Local Feature (DeLF)
+PyTorch Implementation of "Large-Scale Image Retrieval with Attentive Deep Local Features"      
 reference: https://arxiv.org/pdf/1612.06321.pdf
 
 
