@@ -1,5 +1,6 @@
 
 # Pytorch Implementation of Deep Local Feature (DeLF)
+PyTorch Implementation of "Large-Scale Image Retrieval with Attentive Deep Local Features"      
 reference: https://arxiv.org/pdf/1612.06321.pdf
 
 
@@ -85,7 +86,7 @@ $ python extractor.py
 
 ## Visualization
 You can visualize DeLF matching batween two arbitrary query images.
-Let's assume there exist two images, test/img1.jpg, test/img2.jpg in `extract/test/` folder.
+Let's assume there exist two images, test/img1.jpg, test/img2.jpg.
 Run visualize.ipynb using Jupyter Notebook, and run each cells.
 You may get the result like below.
 
